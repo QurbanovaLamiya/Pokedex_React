@@ -1,11 +1,12 @@
 import { Component, Fragment } from "react";
 import "./App.css";
+import Pokemon from "./components/Pokemon";
 
 class App extends Component {
   render() {
     return (
       <Fragment>
-        <h1>Pokedex</h1>
+        <Pokemon />
       </Fragment>
     );
   }
