@@ -1,6 +1,7 @@
 import { Component, Fragment } from "react";
 import PokemonCard from "../PokemonCard";
 import "./PokemonContent.css";
+import PropTypes from "prop-types";
 
 class PokemonContent extends Component {
   render() {
@@ -28,5 +29,12 @@ class PokemonContent extends Component {
     );
   }
 }
+
+PokemonContent.propTypes = {
+  isWinner: PropTypes.string,
+  resultColor: PropTypes.string,
+  point: PropTypes.number,
+  team: PropTypes.array,
+};
 
 export default PokemonContent;
