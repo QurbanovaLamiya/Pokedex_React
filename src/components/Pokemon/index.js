@@ -1,6 +1,7 @@
 import { Component } from "react";
 import PokemonContent from "../PokemonContent";
 import PokemonData from "../PokemonData";
+import "./Pokemon.css";
 
 class Pokemon extends Component {
   constructor() {
@@ -24,34 +25,52 @@ class Pokemon extends Component {
       randomTeam1 = [...randomTeam1, newRandom];
     }
 
-    this.setState({ team1: randomTeam1, team2: randomTeam2 });
+    this.setState({
+      team1: randomTeam1,
+      team2: randomTeam2,
+      click: true,
+    });
   };
 
   render() {
     let teamPoint1 = this.state.team1.reduce(
       (sum, pokemon) => sum + pokemon.base_experience,
-      0
+      false
     );
     let teamPoint2 = this.state.team2.reduce(
       (sum, pokemon) => sum + pokemon.base_experience,
-      0
+      false
     );
 
     return (
-      <div>
-        <PokemonContent
-          point={teamPoint1}
-          team={this.state.team1}
-          isWinner={teamPoint1 > teamPoint2 && "Winner : team1"}
-        />
+      <div className="main">
+        <h1>Pokedex game</h1>
         <button onClick={this.changeTeam}>
-          {this.state.click ? "Change Team" : "Start"}
+          {this.state.click ? "Change Team" : "Start Game"}
         </button>
-        <PokemonContent
-          point={teamPoint2}
-          team={this.state.team2}
-          isWinner={teamPoint2 > teamPoint1 && " Winner : team2"}
-        />
+        <div className="container">
+          {this.state.click && (
+            <>
+              <PokemonContent
+                point={teamPoint1}
+                team={this.state.team1}
+                isWinner={
+                  teamPoint1 > teamPoint2 ? "Team1  Wonn" : " Team1  Lost"
+                }
+                resultColor={teamPoint1 > teamPoint2 ? "winner" : "lost"}
+              />
+
+              <PokemonContent
+                point={teamPoint2}
+                team={this.state.team2}
+                isWinner={
+                  teamPoint2 > teamPoint1 ? "Team2  Wonn" : " Team2  Lost"
+                }
+                resultColor={teamPoint2 > teamPoint1 ? "winner" : "lost"}
+              />
+            </>
+          )}
+        </div>
       </div>
     );
   }

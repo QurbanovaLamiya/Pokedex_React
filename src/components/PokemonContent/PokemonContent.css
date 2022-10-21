@@ -1,0 +1,27 @@
+.gameCards {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+}
+
+.score {
+  width: 35%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+h4 {
+  color: #187c6d;
+  font-size: 1.1rem;
+}
+
+.winner,
+.lost {
+  font-weight: bold;
+  font-size: 1.6rem;
+  color: #008000;
+}
+
+.lost {
+  color: #ff0000;
+}
